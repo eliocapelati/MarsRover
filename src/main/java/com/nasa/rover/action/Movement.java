@@ -37,6 +37,14 @@ public enum Movement {
 	}
 	
 	/**
+	 * 
+	 * @return
+	 */
+	public String getCommand(){
+		return command;
+	}
+	
+	/**
 	 * Get a movement based on a SINGLE character command.
 	 * @param command
 	 * @return
