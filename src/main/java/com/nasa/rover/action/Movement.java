@@ -49,9 +49,9 @@ public enum Movement {
 	 * @param command
 	 * @return
 	 */
-	public static Movement getMovement(String command){
+	public static Movement parse(String command){
 		return Stream.of(Movement.values()).
-				filter(m -> m.command.equals(command)).
+				filter(m -> m.command.equalsIgnoreCase(command)).
 				findFirst().
 				orElse(Movement.STAY);
 	}

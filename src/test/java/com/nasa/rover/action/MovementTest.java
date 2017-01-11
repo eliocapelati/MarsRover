@@ -4,15 +4,20 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * 
+ * @author eliocapelati
+ *
+ */
 public class MovementTest {
 
 	@Test
-	public void testGetMovement() {
-		assertEquals(Movement.MOVE , Movement.getMovement("M"));
-		assertEquals(Movement.TURN_LEFT , Movement.getMovement("L"));
-		assertEquals(Movement.TURN_RIGHT , Movement.getMovement("R"));
-		assertEquals(Movement.STAY , Movement.getMovement("Z"));
-		assertEquals(Movement.STAY , Movement.getMovement(""));
+	public void testParse() {
+		assertEquals(Movement.MOVE , Movement.parse("M"));
+		assertEquals(Movement.TURN_LEFT , Movement.parse("L"));
+		assertEquals(Movement.TURN_RIGHT , Movement.parse("R"));
+		assertEquals(Movement.STAY , Movement.parse("Z"));
+		assertEquals(Movement.STAY , Movement.parse(""));
 	}
 
 }
