@@ -35,7 +35,6 @@ public class InputParser {
 		return Boolean.TRUE;
 	}
 	
-
 	public static class ParserBuilder {
 		private InputParser parser;
 		
