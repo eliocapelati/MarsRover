@@ -55,6 +55,42 @@ public class Rover {
 	public void setMovements(List<Movement> movements) {
 		this.movements = movements;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Rover [");
+		if (id != null) {
+			builder.append("id=");
+			builder.append(id);
+			builder.append(", ");
+		}
+		if (plateauBorder != null) {
+			builder.append("plateauBorder=");
+			builder.append(plateauBorder);
+			builder.append(", ");
+		}
+		if (point != null) {
+			builder.append("point=");
+			builder.append(point);
+			builder.append(", ");
+		}
+		if (direction != null) {
+			builder.append("direction=");
+			builder.append(direction);
+			builder.append(", ");
+		}
+		if (movements != null) {
+			builder.append("movements=");
+			builder.append(movements);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 	
 	

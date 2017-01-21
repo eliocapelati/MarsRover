@@ -7,6 +7,11 @@ import java.util.regex.Pattern;
 
 import org.junit.Test;
 
+/**
+ * 
+ * @author eliocapelati
+ *
+ */
 public class PatternsTest {
 	
 	
@@ -82,7 +87,7 @@ public class PatternsTest {
 		String sample1 = "LMRLMLMMM\n";
 		String sample2 = "LMLMLMMM\n";
 		String sample3 = "LRMMMLM";
-		Pattern pattern = Patterns.DIRECTION.getPattern();
+		Pattern pattern = Patterns.MOVEMENTS.getPattern();
 		Matcher matcher = pattern.matcher(sample1);
 		Matcher matcher2 = pattern.matcher(sample2);
 		Matcher matcher3 = pattern.matcher(sample3);
@@ -99,7 +104,7 @@ public class PatternsTest {
 		String sample1 = "L M R";
 		String sample2 = "";
 		String sample3 = "L M MMM";
-		Pattern pattern = Patterns.DIRECTION.getPattern();
+		Pattern pattern = Patterns.MOVEMENTS.getPattern();
 		
 		Matcher matcher = pattern.matcher(sample1);
 		Matcher matcher2 = pattern.matcher(sample2);
@@ -109,6 +114,14 @@ public class PatternsTest {
 		assertFalse(matcher2.matches());
 		assertFalse(matcher3.matches());
 		
+	}
+	
+	@Test
+	public void testSomeMethod(){
+		assertEquals(Patterns.PLATEAU, Patterns.parse("5 5"));
+		assertEquals(Patterns.MOVEMENTS, Patterns.parse("LMRLMLMMM"));
+		assertEquals(Patterns.ROBOT, Patterns.parse("3 3 E"));
+		assertEquals(Patterns.NONE, Patterns.parse(""));
 	}
 
 }
