@@ -1,8 +1,6 @@
 package com.nasa.rover.parser;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -69,7 +67,7 @@ public class InputParserTest {
 					+ "1 2 N\n"
 					+ "MMRMMRMRRM";
 		List<Rover> parse = InputParser.builder().withInput(test).build().parse();
-		System.out.println(parse);
+		assertEquals(1, parse.size());
 	}
 	
 	

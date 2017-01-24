@@ -10,7 +10,6 @@ import java.util.stream.Stream;
 import org.springframework.data.geo.Point;
 
 import com.nasa.rover.action.Direction;
-import com.nasa.rover.action.Movement;
 import com.nasa.rover.model.Rover;
 
 /**
@@ -38,7 +37,7 @@ public class InputParser {
 	}
 	
 	
-	public List<Rover> parse() throws InputParserException {
+	public List<Rover> parse() throws InputParserException{
 		List<Rover> list = new ArrayList<>();
 		Point plateauBorder;
 
@@ -49,7 +48,7 @@ public class InputParser {
 				list.add(extractRover(lines.next(), lines.next(), plateauBorder));
 			}
 		}else{
-			throw new InputParserException("The input provided does not contain a valid size");
+			throw new InputParserException(String.format("The input provided does not contain a valid size [input] :%s ", input));
 		}
 		return list;
 	}
@@ -76,9 +75,10 @@ public class InputParser {
 		return rover;
 	}
 
-	private List<Movement> extractMovements(String movements) throws InputParserException {
+	private List<String> extractMovements(String movements) throws InputParserException {
 		if(Patterns.isEquals(movements, Patterns.MOVEMENTS)){
-			return Stream.of(movements.split(SPLIT_REGEX)).map(Movement::parse).collect(Collectors.toList());
+			return Stream.of(movements.split(SPLIT_REGEX)).
+					collect(Collectors.toList());
 		} else {
 			throw new InputParserException(String.format("Invalid Movements: %s", movements));
 		}
@@ -88,8 +88,8 @@ public class InputParser {
 		
 		if(Patterns.isEquals(positionAndDirection, Patterns.ROBOT)){
 			String[] values = positionAndDirection.split(SPACE_REGEX);
-			rover.setPoint(new Point(Long.valueOf(values[0]), Long.valueOf(values[1])));
-			rover.setDirection(Direction.parse(values[2]));
+			rover.setStartPoint(new Point(Long.valueOf(values[0]), Long.valueOf(values[1])));
+			rover.setStartDirection(Direction.parse(values[2]));
 		}else{
 			throw new InputParserException(String.format("Invalid Rover Position: %s", positionAndDirection));
 		}

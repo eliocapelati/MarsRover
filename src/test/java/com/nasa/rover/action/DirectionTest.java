@@ -12,9 +12,6 @@ public class DirectionTest {
 		assertEquals(Direction.NORTH, Direction.parse("N"));
 		assertEquals(Direction.EAST, Direction.parse("E"));
 		assertEquals(Direction.SOUTH, Direction.parse("S"));
-		assertEquals(Direction.NONE, Direction.parse(""));
-		assertEquals(Direction.NONE, Direction.parse("Z"));
-		
 	}
-
+	
 }
