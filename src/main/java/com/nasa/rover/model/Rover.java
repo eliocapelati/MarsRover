@@ -1,10 +1,12 @@
 package com.nasa.rover.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.geo.Point;
+import org.springframework.data.solr.core.mapping.Indexed;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
 import com.nasa.rover.action.Direction;
@@ -16,21 +18,24 @@ import com.nasa.rover.action.Direction;
 @SolrDocument(solrCoreName = "gettingstarted")
 public class Rover {
 	
-	@Id @Field
+	@Id @Indexed
 	private String id;
-	@Field
+	@Indexed
 	private Point plateauBorder;
-	@Field
+	@Indexed
 	private Point startPoint;
-	@Field
+	@Indexed
 	private Point endPoint;
-	@Field
+	@Indexed
 	private String startDirection;
-	@Field
+	@Indexed
 	private String endDirection;
-	@Field(child=true)
+	@Indexed
 	private List<String> movements;
+	@Indexed
 	private Boolean moved;
+	@Indexed
+	private Map<String,String> debug = new HashMap<>();
 	
 	public String getId() {
 		return id;
@@ -114,7 +119,29 @@ public class Rover {
 		this.moved = moved;
 	}
 
-	/* (non-Javadoc)
+	/**
+     * @return the debug
+     */
+    public Map<String, String> getDebug() {
+        return debug;
+    }
+
+    /**
+     * @param debug the debug to set
+     */
+    public void setDebug(Map<String, String> debug) {
+        this.debug = debug;
+    }
+    /**
+     * 
+     * @param key
+     * @param value
+     */
+    public void setDebug(String key, String value) {
+        this.debug.put(key, value);
+    }
+
+    /* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
